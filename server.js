@@ -1,7 +1,7 @@
 const express = require("express");
 const moragan = require("morgan");
 const dotenv = require("dotenv");
-require("./config/db");
+const connectDB = require("./config/db");
 const User = require("./models/userModels");
 const Doctor = require("./models/doctorModel");
 const port = process.env.PORT || 8000;
@@ -10,6 +10,8 @@ const path = require('path');
 
 // dotenv config
 dotenv.config();
+// mongobd connect
+connectDB();
 
 // rest object
 const app = express();
