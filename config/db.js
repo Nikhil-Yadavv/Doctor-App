@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://127.0.0.1/DoctorAppointment', {
-}).then(() => {
-    console.log("Connection success");
-}).catch((e) => {
-    console.log(e);
-})
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log(`Mongodb connected ${mongoose.connection.host}`);
+  } catch (error) {
+    console.log(`Mongodb Server Issue ${error}`);
+  }
+};
+
+module.exports = connectDB;
